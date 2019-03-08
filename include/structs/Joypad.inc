@@ -4,6 +4,7 @@
         struct_init_defs \struct_entry, \label
         u16 \label, Held // loc=0x0
         u16 \label, Pressed // loc=0x2
+       
         u16 \label, LowSensitivityHeld // loc=0x4
         u16 \label, Held2 // loc=0x6
         u8 \label, AHeldTimer // loc=0x8

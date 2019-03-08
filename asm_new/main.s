@@ -24,5 +24,10 @@ creative_hook:
 
     thumb_func_start creative_main
 creative_main:
-    bx lr
+    push {lr}
+    mov r7, r10
+    ldr r5, [r7, #oToolkit_JoypadPtr]
+    ldr
+    pop {pc}
+    .pool
     thumb_func_end creative_main
