@@ -2,7 +2,9 @@
 	.macro joypad_struct, label=oJoypad, struct_entry=label_struct_entry, struct_begin=struct_begin
         \struct_begin
         struct_init_defs \struct_entry, \label
+        // all unused flags are permanently set to 1
         u16 \label, Held // loc=0x0
+            struct_const JOYPAD_DEFAULT, 0xFC00
             struct_const JOYPAD_A, 0x0001
             struct_const JOYPAD_B, 0x0002
             struct_const JOYPAD_SELECT, 0x0004
