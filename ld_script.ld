@@ -52,6 +52,8 @@ SECTIONS
 	ALIGN(4)
 	{
 		data.o(.rodata);
+		data.o(.text);
+
 	} >rom_region
 
 	.fill :

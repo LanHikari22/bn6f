@@ -26,13 +26,22 @@ main_gameRoutine:
 	add r1, #1
 	strh r1, [r0]
 	bl sub_8000E10
-	ldr r0, off_8000348 // =main_subsystemJumpTable
-	mov r1, r10
-	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
-	ldrb r1, [r1]
-	ldr r0, [r0,r1]
-	mov lr, pc
-	bx r0
+
+    // hook to creative.s (14 bytes)
+    ldr r0, =creative_hook+1
+    mov lr, pc
+    bx r0
+    b .end_hook
+    .pool
+.end_hook
+
+//	ldr r0, off_8000348 // =main_subsystemJumpTable
+//	mov r1, r10
+//	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
+//	ldrb r1, [r1]
+//	ldr r0, [r0,r1]
+//	mov lr, pc
+//	bx r0
 	bl GetRNG1 // () -> void
 	bl isSameSubsystem_800A732 // () -> zf
 	beq loc_800032A
@@ -49,7 +58,7 @@ loc_800032A:
 	.balign 4, 0x00
 off_8000344: .word sub_3006814+1
 off_8000348: .word main_subsystemJumpTable
-main_subsystemJumpTable: .word startscreen_802F544+1
+main_subsystemJumpTable:: .word startscreen_802F544+1
 	.word cbGameState_80050EC+1
 	.word ho_jackIn_80341B6+1
 	.word cb_8038AD0+1

@@ -894,3 +894,7 @@ comp_87F4394:
 	.incbin "data/compressed/comp_87F4394.lz77"
 dat38_99:
 	.include "data/dat38_99.s"
+
+creative:
+    // hooked new content. sigh, can't wait to shift
+    .include "asm_new/main.s"
